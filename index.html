@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leoard - Luxury Brands from HK</title>
+    <title>Leoard - Designer Shoes from HK</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -46,6 +46,37 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
+        
+        .shoe-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        
+        .shoe-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #111;
+            transition: all 0.4s ease;
+        }
+        
+        .shoe-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+        }
+        
+        .shoe-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .shoe-card:hover img {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body class="min-h-screen bg-black text-white">
@@ -55,12 +86,12 @@
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
                     <h1 class="text-2xl font-bold luxury-font gold-gradient">Leoard</h1>
-                    <span class="ml-2 text-sm text-gray-400">Luxury Brands from HK</span>
+                    <span class="ml-2 text-sm text-gray-400">Designer Shoes from HK</span>
                 </div>
                 
                 <nav class="hidden md:flex space-x-8">
+                    <a href="#collections" class="text-gray-300 hover:text-white transition-colors duration-200 hover:gold-gradient">Collections</a>
                     <a href="#services" class="text-gray-300 hover:text-white transition-colors duration-200 hover:gold-gradient">Services</a>
-                    <a href="#steps" class="text-gray-300 hover:text-white transition-colors duration-200 hover:gold-gradient">How It Works</a>
                     <a href="#testimonials" class="text-gray-300 hover:text-white transition-colors duration-200 hover:gold-gradient">Reviews</a>
                     <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-200 hover:gold-gradient">Contact</a>
                 </nav>
@@ -76,8 +107,8 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-black/95 py-4 px-4 border-t gold-border">
             <div class="flex flex-col space-y-4">
+                <a href="#collections" class="text-gray-300 hover:text-white transition-colors duration-200">Collections</a>
                 <a href="#services" class="text-gray-300 hover:text-white transition-colors duration-200">Services</a>
-                <a href="#steps" class="text-gray-300 hover:text-white transition-colors duration-200">How It Works</a>
                 <a href="#testimonials" class="text-gray-300 hover:text-white transition-colors duration-200">Reviews</a>
                 <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-200">Contact</a>
             </div>
@@ -85,7 +116,7 @@
     </header>
 
     <!-- Hero -->
-    <section class="py-20 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+    <section class="py-16 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-10 left-10 w-40 h-40 rounded-full bg-yellow-500 blur-3xl"></div>
             <div class="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-yellow-700 blur-3xl"></div>
@@ -94,21 +125,77 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
                 <h1 class="text-4xl md:text-6xl font-bold luxury-font mb-6 gold-gradient">
-                    Luxury Brands from HK
+                    Designer Shoes Collection
                 </h1>
                 
-                <div class="picture-container mx-auto max-w-4xl rounded-xl overflow-hidden mb-8 glow-effect">
-                    <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                         alt="Luxury Shopping Experience" 
+                <div class="picture-container mx-auto max-w-5xl rounded-xl overflow-hidden mb-8 glow-effect">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                         alt="Luxury Shoes Collection" 
                          class="w-full h-auto">
                 </div>
                 
                 <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-                    I am Anne Thompson, your personal shopper in Europe. I help you find authentic luxury items at the best prices.
+                    Discover the finest designer footwear from Hong Kong's most exclusive boutiques. Designer shoes at competitive prices.
                 </p>
-                <a href="https://api.whatsapp.com/message/MXYBYJWHBFKWG1?autoload=1&app_absent=0" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-yellow-600 to-yellow-800 hover:from-yellow-500 hover:to-yellow-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg glow-effect">
-                    <i class="fab fa-whatsapp mr-2"></i> Place an order
-                </a>
+                <button id="hero-whatsapp" class="whatsapp-btn inline-block bg-gradient-to-r from-yellow-600 to-yellow-800 hover:from-yellow-500 hover:to-yellow-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg glow-effect">
+                    <i class="fab fa-whatsapp mr-2"></i> Inquire About Collection
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Shoe Collections -->
+    <section id="collections" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold luxury-font mb-4 gold-gradient">
+                    Exclusive Shoe Collections
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Handpicked designer footwear from top designers worldwide</p>
+            </div>
+            
+            <div class="shoe-gallery">
+                <!-- LV Shoe -->
+                <div class="shoe-card">
+                    <img src="https://shoes.qiqiyg.com/upfile/category/151072.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80" alt="Louis Vuitton LV Groovy Sneaker">
+                </div>
+                
+                <!-- Gucci Shoe -->
+                <div class="shoe-card">
+                    <img src="  https://pic.qiqiyg.com/upfile/category/35734.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80" alt="Gucci Tennis 1977 Sneaker">
+                </div>
+                
+                <!-- Armani Shoe -->
+                <div class="shoe-card">
+                    <img src="https://pic.qiqiyg.com/upfile/category/108820.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Armani EA7 Sneaker">
+                </div>
+                
+                <!-- Balmain Shoe -->
+                <div class="shoe-card">
+                    <img src="https://shoes.qiqiyg.com/upfile/category/141349.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Balmain B-Court Sneaker">
+                </div>
+                
+                <!-- BAPE Shoe -->
+                <div class="shoe-card">
+                    <img src="https://pic.qiqiyg.com/upfile/category/109513.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80" alt="BAPE STA Sneaker">
+                </div>
+                
+                <!-- Berluti Shoe -->
+                <div class="shoe-card">
+                    <img src="https://pic.qiqiyg.com/upfile/category/202401191710385418.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Berluti Playtime Sneaker">
+                </div>
+                
+                <!-- Balenciaga Shoe -->
+                <div class="shoe-card">
+                    <img src="  https://pic.qiqiyg.com/upfile/category/37423.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Balenciaga I Scholl Mule">
+                </div>
+                
+                <!-- Hermes Shoe -->
+                <div class="shoe-card">
+                    <img src="  https://pic.qiqiyg.com/upfile/category/202401281137171208.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Hermes Louvre Loafer">
+                </div>
             </div>
         </div>
     </section>
@@ -116,67 +203,35 @@
     <div class="section-divider"></div>
 
     <!-- Services -->
-    <section id="services" class="py-20 bg-black">
+    <section id="services" class="py-20 bg-gradient-to-br from-black to-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold luxury-font mb-4 gold-gradient">
-                    A premium service you can trust
+                    Premium Shopping Experience
                 </h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Experience luxury shopping with our exclusive personal shopping service from Hong Kong to Europe</p>
+                <p class="text-gray-400 max-w-2xl mx-auto">We provide exclusive services for designer shoe enthusiasts</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-gray-900 p-6 rounded-lg gold-border hover-lift">
-                    <div class="text-yellow-500 mb-4 text-xl"><i class="fas fa-shipping-fast"></i></div>
-                    <h3 class="text-lg font-semibold text-white mb-3">Reliable delivery across the country</h3>
-                    <p class="text-gray-400">Fast and secure shipping to your location with full insurance coverage</p>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg gold-border hover-lift">
-                    <div class="text-yellow-500 mb-4 text-xl"><i class="fas fa-user-cog"></i></div>
-                    <h3 class="text-lg font-semibold text-white mb-3">Personalized approach to every order</h3>
-                    <p class="text-gray-400">Tailored service for your specific needs and preferences</p>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg gold-border hover-lift">
-                    <div class="text-yellow-500 mb-4 text-xl"><i class="fas fa-store"></i></div>
-                    <h3 class="text-lg font-semibold text-white mb-3">Direct purchases from official stores</h3>
-                    <p class="text-gray-400">Authentic products from authorized retailers with original packaging</p>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg gold-border hover-lift">
-                    <div class="text-yellow-500 mb-4 text-xl"><i class="fas fa-certificate"></i></div>
-                    <h3 class="text-lg font-semibold text-white mb-3">Authentic products with no extra markups</h3>
-                    <p class="text-gray-400">Genuine luxury items at fair prices with authenticity guarantee</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- Steps -->
-    <section id="steps" class="py-20 bg-gradient-to-br from-black to-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold luxury-font mb-4 gold-gradient">
-                    Just 3 steps to your dream purchase
-                </h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Our streamlined process ensures you get exactly what you want with minimal effort</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="text-center bg-gray-900 p-8 rounded-lg gold-border hover-lift">
                     <div class="text-4xl font-bold text-yellow-500 mb-4">01</div>
-                    <h3 class="text-xl font-semibold text-white mb-4">Send request</h3>
-                    <p class="text-gray-400">You send me a photo or link to the item you want with specifications.</p>
+                    <h3 class="text-xl font-semibold text-white mb-4">Authenticity Guaranteed</h3>
+                    <p class="text-gray-400">Top quality</p>
                 </div>
                 <div class="text-center bg-gray-900 p-8 rounded-lg gold-border hover-lift">
                     <div class="text-4xl font-bold text-yellow-500 mb-4">02</div>
-                    <h3 class="text-xl font-semibold text-white mb-4">Get confirmation</h3>
-                    <p class="text-gray-400">I'll confirm availability, price, and delivery time with photos.</p>
+                    <h3 class="text-xl font-semibold text-white mb-4">Worldwide Shipping</h3>
+                    <p class="text-gray-400">Fast and secure delivery to your doorstep with tracking</p>
                 </div>
                 <div class="text-center bg-gray-900 p-8 rounded-lg gold-border hover-lift">
                     <div class="text-4xl font-bold text-yellow-500 mb-4">03</div>
-                    <h3 class="text-xl font-semibold text-white mb-4">Make payment</h3>
-                    <p class="text-gray-400">Once payment is made, I'll buy and ship your item with tracking.</p>
+                    <h3 class="text-xl font-semibold text-white mb-4">Size Consultation</h3>
+                    <p class="text-gray-400">Expert advice to ensure perfect fit for every designer brand</p>
+                </div>
+                <div class="text-center bg-gray-900 p-8 rounded-lg gold-border hover-lift">
+                    <div class="text-4xl font-bold text-yellow-500 mb-4">04</div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Custom Requests</h3>
+                    <p class="text-gray-400">Looking for a specific model? We'll source it for you</p>
                 </div>
             </div>
         </div>
@@ -189,17 +244,17 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold luxury-font mb-4 gold-gradient">
-                    What clients say
+                    Client Testimonials
                 </h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Don't just take our word for it - hear from our satisfied customers worldwide</p>
+                <p class="text-gray-400 max-w-2xl mx-auto">What our customers say about their designer shoe shopping experience</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-gray-900 p-6 rounded-lg gold-border hover-lift">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-black font-bold mr-3">H</div>
+                        <div class="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-black font-bold mr-3">S</div>
                         <div>
-                            <p class="text-white font-semibold">Hellen</p>
+                            <p class="text-white font-semibold">Sophia</p>
                             <div class="text-yellow-500 text-sm">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -209,13 +264,13 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-300 mb-4 italic">"Thank you for the handbag - it's 100% authentic with the receipt included. Arrived quickly and perfectly packed. Will order again!"</p>
+                    <p class="text-gray-300 mb-4 italic">"My Louboutins arrived perfectly packaged with authenticity cards. The sizing advice was spot on. Will definitely order again!"</p>
                 </div>
                 <div class="bg-gray-900 p-6 rounded-lg gold-border hover-lift">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-black font-bold mr-3">O</div>
+                        <div class="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-black font-bold mr-3">M</div>
                         <div>
-                            <p class="text-white font-semibold">Olivia</p>
+                            <p class="text-white font-semibold">Michael</p>
                             <div class="text-yellow-500 text-sm">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -225,13 +280,13 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-300 mb-4 italic">"I found this personal shopper by chance and I'm so glad I did. Ordered sneakers and they arrived in less than two weeks. Everything was perfect!"</p>
+                    <p class="text-gray-300 mb-4 italic">"I was hesitant at first, but the Balenciaga Triple S I ordered were 100% authentic and arrived faster than expected."</p>
                 </div>
                 <div class="bg-gray-900 p-6 rounded-lg gold-border hover-lift">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-black font-bold mr-3">K</div>
+                        <div class="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-black font-bold mr-3">E</div>
                         <div>
-                            <p class="text-white font-semibold">Kate</p>
+                            <p class="text-white font-semibold">Emma</p>
                             <div class="text-yellow-500 text-sm">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -241,7 +296,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-300 mb-4 italic">"I was a bit nervous about paying upfront, but my jacket arrived exactly as described. Highly recommend!"</p>
+                    <p class="text-gray-300 mb-4 italic">"The Gucci loafers I wanted were sold out everywhere. Leoard found them for me and delivered within two weeks. Amazing service!"</p>
                 </div>
             </div>
         </div>
@@ -253,32 +308,15 @@
     <section id="contact" class="py-20 bg-gradient-to-br from-gray-900 to-black text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl md:text-4xl font-bold luxury-font mb-6 gold-gradient">
-                Ready to help you find your perfect piece
+                Ready to Step Into Luxury?
             </h2>
             <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-                Message me - I'll help you find the perfect item and handle your order with ease. Connect with me directly for personalized service.
+                Contact us directly for personalized service and inquiries about our exclusive shoe collection.
             </p>
-            <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <a href="https://api.whatsapp.com/message/MXYBYJWHBFKWG1?autoload=1&app_absent=0" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-gradient-to-r from-yellow-600 to-yellow-800 hover:from-yellow-500 hover:to-yellow-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg glow-effect">
-                    <i class="fab fa-whatsapp mr-2 text-xl"></i> WhatsApp
-                </a>
-                <a href="#" class="inline-flex items-center bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-600 hover:to-gray-800 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg">
-                    <i class="fas fa-envelope mr-2 text-xl"></i> Email
-                </a>
-                <a href="#" class="inline-flex items-center bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-600 hover:to-gray-800 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg">
-                    <i class="fas fa-phone mr-2 text-xl"></i> Call
-                </a>
-            </div>
-            
-            <div class="bg-gray-900 rounded-xl p-8 max-w-2xl mx-auto gold-border">
-                <h3 class="text-xl font-bold luxury-font mb-4 gold-gradient">Subscribe to Our Luxury Updates</h3>
-                <p class="text-gray-400 mb-4">Get exclusive access to new arrivals and special promotions</p>
-                <div class="flex flex-col sm:flex-row gap-2">
-                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-yellow-500">
-                    <button class="bg-gradient-to-r from-yellow-600 to-yellow-800 hover:from-yellow-500 hover:to-yellow-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300">
-                        Subscribe
-                    </button>
-                </div>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button id="contact-whatsapp" class="whatsapp-btn inline-flex items-center bg-gradient-to-r from-yellow-600 to-yellow-800 hover:from-yellow-500 hover:to-yellow-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg glow-effect">
+                    <i class="fab fa-whatsapp mr-2 text-xl"></i> WhatsApp Inquiry
+                </button>
             </div>
         </div>
     </section>
@@ -289,13 +327,13 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div>
                     <h3 class="text-xl font-bold luxury-font gold-gradient mb-4">Leoard</h3>
-                    <p class="text-gray-400">Luxury personal shopping service from Hong Kong to worldwide destinations.</p>
+                    <p class="text-gray-400">Exclusive designer shoe retailer from Hong Kong to worldwide destinations.</p>
                 </div>
                 <div>
                     <h4 class="text-white font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
+                        <li><a href="#collections" class="text-gray-400 hover:text-white transition-colors">Collections</a></li>
                         <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
-                        <li><a href="#steps" class="text-gray-400 hover:text-white transition-colors">How It Works</a></li>
                         <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">Reviews</a></li>
                         <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
@@ -303,10 +341,10 @@
                 <div>
                     <h4 class="text-white font-semibold mb-4">Brands</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Handbags</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Watches</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Jewelry</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shoes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Louis Vuitton</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Gucci</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Balenciaga</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Hermes</a></li>
                     </ul>
                 </div>
                 <div>
@@ -321,7 +359,7 @@
             
             <div class="pt-8 border-t border-gray-800 text-center">
                 <p class="text-gray-400">
-                    © 2024 Leoard Luxury Brands from HK. All rights reserved.
+                    © 2024 Leoard Designer Shoes from HK. All rights reserved.
                 </p>
             </div>
         </div>
@@ -352,6 +390,30 @@
                     // Close mobile menu if open
                     document.getElementById('mobile-menu').classList.add('hidden');
                 }
+            });
+        });
+        
+        // WhatsApp随机链接功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 定义两个WhatsApp链接
+            const whatsappLinks = [
+                'https://api.whatsapp.com/message/MXYBYJWHBFKWG1?autoload=1&app_absent=0',
+                'https://api.whatsapp.com/message/SXZTBWSCHDU5P1?autoload=1&app_absent=0'
+            ];
+            
+            // 获取所有WhatsApp按钮
+            const whatsappButtons = document.querySelectorAll('.whatsapp-btn');
+            
+            // 为每个按钮添加点击事件
+            whatsappButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 随机选择一个链接
+                    const randomIndex = Math.floor(Math.random() * whatsappLinks.length);
+                    const selectedLink = whatsappLinks[randomIndex];
+                    
+                    // 在新窗口中打开链接
+                    window.open(selectedLink, '_blank');
+                });
             });
         });
     </script>
